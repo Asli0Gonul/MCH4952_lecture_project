@@ -3,161 +3,123 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Deep Dive Robotics App</title>
-  <meta name="description" content="Mobile app version of Deep Dive Robotics platform." />
-  <meta name="theme-color" content="#061936" />
-  <link rel="manifest" href="manifest.json" />
-  <link rel="apple-touch-icon" href="deepdive-logo.svg" />
-  <link rel="stylesheet" href="app.css" />
+  <title>Deep Dive Robotics</title>
+  <meta name="description" content="Integrated learning and engineering tools for underwater robotics." />
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <main class="app-shell">
-    <section class="screen active" id="home">
-      <div class="hero-card">
-        <img class="app-logo" src="deepdive-logo.svg" alt="Deep Dive Robotics logo" />
-        <h1>Deep Dive Robotics</h1>
-        <p>Mobile learning and engineering companion for underwater robotics.</p>
-        <div class="hero-buttons">
-          <button class="pill" data-go="tools">Open Tools</button>
-          <button class="pill secondary" data-go="videos">Watch Videos</button>
-        </div>
+<body data-page="home">
+  <div class="page-transition"></div>
+
+  <nav class="topbar">
+    <a class="brand" href="index.html" aria-label="Deep Dive Robotics home">
+      <img src="deepdive-logo.svg" alt="Deep Dive Robotics logo" />
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-menu">
+      <li><a class="active" href="index.html">Home</a></li>
+      <li><a href="tools.html">Tools</a></li>
+      <li><a href="learning.html">Learning</a></li>
+      <li><a href="videos.html">Videos</a></li>
+      <li><a href="jobs.html">Jobs</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero-ui">
+    <div class="hero-text">
+      <h1>Deep Dive<br />Robotics</h1>
+      <p>Integrated learning and engineering tools for underwater robotics</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="tools.html">Explore Platform <span>→</span></a>
+        <a class="btn ghost" href="videos.html">Watch ROV Videos</a>
       </div>
-
-      <div class="quick-grid">
-        <button class="quick-tile" data-go="tools"><span>⚙</span><b>Tools</b><small>Calculators</small></button>
-        <button class="quick-tile" data-go="videos"><span>▶</span><b>Videos</b><small>ROV learning</small></button>
-        <button class="quick-tile" data-go="jobs"><span>⌁</span><b>Jobs</b><small>ROV careers</small></button>
-        <button class="quick-tile" data-go="about"><span>☰</span><b>About</b><small>Story</small></button>
+    </div>
+    <div class="rov-visual" aria-hidden="true">
+      <div class="rov-body">
+        <span class="light one"></span>
+        <span class="light two"></span>
+        <span class="thruster t1"></span>
+        <span class="thruster t2"></span>
+        <span class="thruster t3"></span>
+        <span class="thruster t4"></span>
       </div>
+      <div class="cable"></div>
+    </div>
+  </header>
 
-      <article class="info-card">
-        <h2>Why this app?</h2>
-        <p>Underwater robotics knowledge is usually scattered across many platforms. This mobile app keeps the most useful tools, videos, and career links in one easy place.</p>
-      </article>
+  <main>
+    <section class="quick-cards">
+      <a class="quick-card" href="tools.html">
+        <div class="quick-icon">▣</div>
+        <div><h3>Engineering Tools</h3><p>Professional calculators and estimators for ROV design and analysis.</p></div>
+        <span>→</span>
+      </a>
+      <a class="quick-card" href="learning.html">
+        <div class="quick-icon">▤</div>
+        <div><h3>Learning Paths</h3><p>Structured tutorials and guides to build your understanding step by step.</p></div>
+        <span>→</span>
+      </a>
+      <a class="quick-card" href="videos.html">
+        <div class="quick-icon">▶</div>
+        <div><h3>ROV Videos</h3><p>Curated underwater robotics videos for design, operation, and learning.</p></div>
+        <span>→</span>
+      </a>
+      <a class="quick-card" href="jobs.html">
+        <div class="quick-icon">⌁</div>
+        <div><h3>ROV Jobs</h3><p>Find marine robotics, ROV, control, and perception career opportunities.</p></div>
+        <span>→</span>
+      </a>
     </section>
 
-    <section class="screen" id="tools">
-      <header class="screen-header"><h1>Engineering Tools</h1><p>Quick mobile calculators for early-stage ROV design.</p></header>
-
-      <article class="calc-card">
-        <h2>Buoyancy Calculator</h2>
-        <label>Water density (kg/m³)<input id="bDensity" type="number" value="1025"></label>
-        <label>Displaced volume (L)<input id="bVolume" type="number" value="12"></label>
-        <label>Vehicle mass (kg)<input id="bMass" type="number" value="11.5"></label>
-        <button class="action" id="calcBuoyancy">Calculate</button>
-        <div class="result" id="buoyancyResult">Result will appear here.</div>
-      </article>
-
-      <article class="calc-card">
-        <h2>Thruster Estimator</h2>
-        <label>Drag force (N)<input id="tDrag" type="number" value="45"></label>
-        <label>Number of thrusters<input id="tCount" type="number" value="4"></label>
-        <label>Safety factor<input id="tSafety" type="number" value="1.5" step="0.1"></label>
-        <button class="action" id="calcThruster">Calculate</button>
-        <div class="result" id="thrusterResult">Result will appear here.</div>
-      </article>
-
-      <article class="calc-card">
-        <h2>Battery Life Estimator</h2>
-        <label>Voltage (V)<input id="batVoltage" type="number" value="14.8" step="0.1"></label>
-        <label>Capacity (Ah)<input id="batCapacity" type="number" value="12" step="0.1"></label>
-        <label>Average power draw (W)<input id="batPower" type="number" value="90"></label>
-        <label>Usable capacity (%)<input id="batUsable" type="number" value="80"></label>
-        <button class="action" id="calcBattery">Calculate</button>
-        <div class="result" id="batteryResult">Result will appear here.</div>
-      </article>
-
-      <article class="calc-card">
-        <h2>Component Helper</h2>
-        <label>Mission type
-          <select id="missionType">
-            <option value="inspection">Inspection</option>
-            <option value="research">Research / Sampling</option>
-            <option value="competition">Student Competition</option>
-            <option value="mapping">Mapping / Survey</option>
-          </select>
-        </label>
-        <label>Operating depth (m)<input id="missionDepth" type="number" value="20"></label>
-        <button class="action" id="calcComponent">Recommend</button>
-        <div class="result" id="componentResult">Recommendation will appear here.</div>
-      </article>
+    <section class="featured">
+      <div class="section-title-row">
+        <h2>Featured Tools</h2>
+        <a href="tools.html">View all tools →</a>
+      </div>
+      <div class="tool-preview-grid">
+        <a class="tool-preview" href="tools.html#buoyancy">
+          <div class="tool-art buoy">▧</div>
+          <div><h3>Buoyancy Calculator</h3><p>Calculate buoyancy, volume requirement, and stability for your ROV.</p></div>
+          <span>→</span>
+        </a>
+        <a class="tool-preview" href="tools.html#thruster">
+          <div class="tool-art thr">✣</div>
+          <div><h3>Thruster Estimator</h3><p>Estimate thrust, power consumption, and efficiency for your propulsion system.</p></div>
+          <span>→</span>
+        </a>
+        <a class="tool-preview" href="tools.html#battery">
+          <div class="tool-art batt">▰</div>
+          <div><h3>Battery Life Estimator</h3><p>Estimate runtime and energy usage based on your system configuration.</p></div>
+          <span>→</span>
+        </a>
+      </div>
     </section>
 
-    <section class="screen" id="videos">
-      <header class="screen-header"><h1>ROV Videos</h1><p>Direct video links for ROV build, thrusters, simulation, and careers.</p></header>
-      <input class="search" id="videoSearch" placeholder="Search videos..." />
-      <div id="videoList" class="list"></div>
-    </section>
-
-    <section class="screen" id="jobs">
-      <header class="screen-header"><h1>ROV Jobs</h1><p>Specific job links and live career boards for underwater robotics.</p></header>
-      <input class="search" id="jobSearch" placeholder="Search jobs..." />
-      <div id="jobList" class="list"></div>
-    </section>
-
-    <section class="screen" id="careers">
-      <header class="screen-header"><h1>Careers</h1><p>Join the DeepDive Technologies team.</p></header>
-      <article class="info-card">
-        <h2>Working Environment</h2>
-        <p>DeepDive Technologies is a collaborative, prototype-driven, and student-friendly environment. We turn complex underwater robotics topics into simple tools, videos, and learning paths.</p>
-        <div class="chips"><span>Collaborative</span><span>Creative</span><span>Engineering-focused</span><span>Research-based</span></div>
-      </article>
-      <article class="info-card">
-        <h2>Open Positions</h2>
-        <ul class="position-list">
-          <li><b>Frontend Developer Intern:</b> builds mobile UI and interactive calculators.</li>
-          <li><b>Robotics Content Research Intern:</b> prepares ROV/AUV learning content.</li>
-          <li><b>UI/UX Designer:</b> improves navigation, cards, and visual hierarchy.</li>
-          <li><b>ROV Tool Development Assistant:</b> improves calculator logic and examples.</li>
-        </ul>
-      </article>
-      <article class="info-card">
-        <h2>Apply</h2>
-        <input id="applyName" placeholder="Full name" />
-        <input id="applyEmail" type="email" placeholder="Email" />
-        <textarea id="applyMessage" rows="4" placeholder="Message"></textarea>
-        <button class="action" id="applyBtn">Submit Application</button>
-        <p class="success" id="applyStatus"></p>
-      </article>
-    </section>
-
-    <section class="screen" id="about">
-      <header class="screen-header"><h1>About</h1><p>The story behind Deep Dive Robotics.</p></header>
-      <article class="profile-card">
-        <img src="founder.jpg" alt="Founder photo" />
-        <h2>Aslı Gönül Ansen</h2>
-        <p>Founder, DeepDive Technologies<br>Mechatronics Engineering Department<br>Bahçeşehir University</p>
-      </article>
-      <article class="info-card">
-        <h2>My Story</h2>
-        <p>I created Deep Dive Robotics after seeing how difficult it can be for students to find practical underwater robotics information in one place. The platform connects tools, videos, career resources, and learning content for ROV and underwater robotics design.</p>
-      </article>
-      <article class="info-card subscribe-card">
-        <h2>Stay Updated</h2>
-        <p>Subscribe to receive weekly blog news and platform updates.</p>
-        <input id="subscribeEmail" type="email" placeholder="Enter your email" />
-        <button class="action" id="subscribeBtn">Subscribe</button>
-        <p class="success" id="subscribeStatus"></p>
-      </article>
+    <section class="home-story">
+      <div>
+        <span class="mini-label">Why it exists</span>
+        <h2>Underwater robotics knowledge is scattered. Deep Dive brings it together.</h2>
+        <p>ROV design requires mechanical design, electronics, power systems, communication, sensors, and control knowledge. This platform turns fragmented resources into a clearer path for students and early-stage engineers.</p>
+      </div>
+      <div class="metric-boxes">
+        <div><strong>40×</strong><span>faster access to early design calculations</span></div>
+        <div><strong>2–3</strong><span>clicks to reach main platform functions</span></div>
+        <div><strong>One</strong><span>integrated place for tools, learning, videos, and jobs</span></div>
+      </div>
     </section>
   </main>
 
-  <nav class="bottom-nav">
-    <button class="active" data-go="home"><span>⌂</span><small>Home</small></button>
-    <button data-go="tools"><span>⚙</span><small>Tools</small></button>
-    <button data-go="videos"><span>▶</span><small>Videos</small></button>
-    <button data-go="jobs"><span>⌁</span><small>Jobs</small></button>
-    <button data-go="about"><span>☰</span><small>About</small></button>
-  </nav>
+  <footer class="site-footer">
+    <div>
+      <img src="deepdive-logo.svg" alt="Deep Dive Robotics logo" />
+      <p>Empowering engineers and students to design, learn, and innovate in underwater robotics.</p>
+    </div>
+    <div><h4>Platform</h4><a href="tools.html">Tools</a><a href="learning.html">Learning</a><a href="videos.html">Videos</a><a href="jobs.html">Jobs</a></div>
+    <div><h4>Company</h4><a href="about.html">About</a><a href="careers.html">Careers</a><a href="careers.html#apply">Contact</a></div>
+    <div><h4>Stay Updated</h4><p>Subscribe for new tools, resources, and updates.</p><form class="subscribe subscribe-form"><input type="email" name="email" placeholder="Enter your email" required /><button type="submit">➤</button></form><p class="subscribe-message"></p></div>
+  </footer>
 
-  <script>
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker.register("./sw.js");
-      });
-    }
-  </script>
-  <script src="app.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
