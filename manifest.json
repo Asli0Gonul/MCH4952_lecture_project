@@ -1,1 +1,19 @@
-
+{
+  "name": "Deep Dive Robotics",
+  "short_name": "DeepDive",
+  "description": "Integrated learning and engineering tools for underwater robotics.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#061936",
+  "theme_color": "#061936",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "deepdive-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
