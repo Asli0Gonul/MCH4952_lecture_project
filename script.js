@@ -49,12 +49,14 @@ document.querySelectorAll('.calc-form').forEach(form=>{
 });
 
 const jobs=[
-{title:'ROV Systems Engineering Intern',company:'Blue Ocean Robotics',country:'Norway',type:'Internship',experience:'Student',mode:'On-site',description:'Support testing and documentation of observation-class ROV systems for marine research.',tags:['ROV','Testing','Marine'],link:'https://www.linkedin.com/jobs/search/?keywords=ROV%20Systems%20Engineering%20Intern&location=Norway'},
-{title:'Marine Robotics Software Engineer',company:'AquaMotion Labs',country:'United Kingdom',type:'Full-time',experience:'Junior',mode:'Hybrid',description:'Develop autonomy modules for underwater inspection robots using ROS and sensor fusion.',tags:['ROS','AUV','Autonomy'],link:'https://www.linkedin.com/jobs/search/?keywords=Marine%20Robotics%20Software%20Engineer&location=United%20Kingdom'},
-{title:'Embedded Systems Engineer — Underwater Vehicles',company:'Subsea Dynamics',country:'Germany',type:'Full-time',experience:'Mid-level',mode:'On-site',description:'Design embedded control boards and power interfaces for subsea robotics platforms.',tags:['Embedded','Power','Control'],link:'https://www.linkedin.com/jobs/search/?keywords=Embedded%20Systems%20Engineer%20Underwater%20Vehicles&location=Germany'},
-{title:'ROV Pilot Technician',company:'Offshore Survey Group',country:'United States',type:'Contract',experience:'Junior',mode:'On-site',description:'Operate and maintain work-class ROV systems for offshore inspection missions.',tags:['ROV Pilot','Offshore','Inspection'],link:'https://www.indeed.com/jobs?q=ROV+Pilot+Technician&l=United+States'},
-{title:'Computer Vision Intern — Marine Perception',company:'DeepVision Robotics',country:'Türkiye',type:'Internship',experience:'Student',mode:'Hybrid',description:'Work on underwater image processing, object detection, and dataset annotation.',tags:['Computer Vision','YOLO','Perception'],link:'https://www.linkedin.com/jobs/search/?keywords=Computer%20Vision%20Intern%20Marine%20Perception&location=Türkiye'},
-{title:'Controls Engineer — ROV Manipulator',company:'Tethys Robotics',country:'France',type:'Full-time',experience:'Mid-level',mode:'On-site',description:'Develop control algorithms for underwater robotic arms and manipulation tasks.',tags:['Control','Manipulator','ROV'],link:'https://www.linkedin.com/jobs/search/?keywords=Controls%20Engineer%20ROV%20Manipulator&location=France'}
+{title:'Senior Production Engineer — ROV Systems',company:'Saab Seaeye',country:'United Kingdom',type:'Full-time',experience:'Senior',mode:'On-site',description:'Work on production engineering and systems integration for complex ROV assemblies. Best for candidates with mechanical/electrical systems experience.',tags:['ROV','Systems Integration','Production'],link:'https://www.saab.com/career/job-opportunities/senior-production-engineer-systems-integration'},
+{title:'ROV Senior Pilot Technician',company:'Oceaneering',country:'United Kingdom / Europe',type:'Full-time',experience:'Mid-level',mode:'On-site',description:'Operate, maintain, and troubleshoot ROV systems, subsea tooling, IWOCS/RWOCS systems, and related offshore equipment.',tags:['ROV Pilot','Offshore','Maintenance'],link:'https://www.oceaneering.com/lp/advance-your-rov-career-journey-with-oceaneering-in-the-uk-and-europe/'},
+{title:'Underwater Robotics Engineer',company:'Indeed Job Board',country:'United States',type:'Full-time',experience:'Junior',mode:'On-site',description:'A live job-board route for robotics engineer roles related to underwater systems, marine autonomy, and undersea engineering.',tags:['Robotics','Underwater','Engineering'],link:'https://www.indeed.com/q-underwater-robotics-engineer-jobs.html'},
+{title:'Senior Robotics Software Engineer — Maritime',company:'Indeed / Anduril-style Maritime Roles',country:'United States',type:'Full-time',experience:'Senior',mode:'On-site',description:'Software engineering roles for maritime autonomous systems, perception, autonomy, and sensor integration.',tags:['Software','Maritime','Autonomy'],link:'https://www.indeed.com/q-autonomous-underwater-vehicle-l-california-jobs.html'},
+{title:'Marine Robotics Engineer',company:'ZipRecruiter Job Board',country:'United States',type:'Full-time',experience:'Mid-level',mode:'Hybrid',description:'Marine robotics engineering roles covering mechanical, electrical, software, and systems engineering responsibilities.',tags:['Marine Robotics','Systems','Engineering'],link:'https://www.ziprecruiter.com/Jobs/Marine-Robotics-Engineer'},
+{title:'ROV Pilot Technician Training / Career Path',company:'ROV Training Resources',country:'Global',type:'Contract',experience:'Student',mode:'On-site',description:'For students and beginners exploring the ROV pilot technician career path and offshore ROV operations.',tags:['Training','ROV Pilot','Career Path'],link:'https://www.youtube.com/watch?v=hdRTyWbIdB4'},
+{title:'Subsea Robotics Careers',company:'Oceaneering Careers',country:'Global',type:'Full-time',experience:'Mid-level',mode:'Hybrid',description:'Explore subsea engineering, ROV, robotics, offshore, and technical operations opportunities through Oceaneering careers.',tags:['Subsea','ROV','Careers'],link:'https://www.oceaneering.com/careers/'},
+{title:'Saab Underwater Systems Career Opportunities',company:'Saab',country:'Global',type:'Full-time',experience:'Junior',mode:'On-site',description:'Explore Saab career opportunities related to underwater systems, ROV technologies, production engineering, and defense robotics.',tags:['Underwater Systems','ROV','Saab'],link:'https://www.saab.com/career/job-opportunities'}
 ];
 function initJobs(){
  const grid=document.getElementById('jobsResults'); if(!grid) return;
@@ -71,12 +73,18 @@ function initJobs(){
 initJobs();
 
 const videos=[
-{title:'What is an ROV?',topic:'rov basics underwater robotics',desc:'Introductory video search about ROV types, structure, and usage.',query:'what is an ROV underwater robotics'},
-{title:'ROV Buoyancy Explained',topic:'buoyancy stability rov',desc:'Learn buoyancy, ballast, center of gravity, and stability concepts.',query:'ROV buoyancy stability explained'},
-{title:'ROV Thrusters and Propulsion',topic:'thruster propulsion rov',desc:'Understand thruster placement, thrust direction, and control mixing.',query:'ROV thruster propulsion explained'},
-{title:'Underwater Robotics Control',topic:'control software rov auv',desc:'Control systems and software concepts for underwater vehicles.',query:'underwater robotics control ROV AUV'},
-{title:'ROV Build Tutorial',topic:'build diy rov',desc:'Practical design and build videos for student ROV platforms.',query:'student ROV build tutorial'},
-{title:'Marine Perception & Cameras',topic:'camera computer vision underwater',desc:'Video resources about underwater vision, cameras, and perception.',query:'underwater robotics computer vision camera'}
+{title:'Blue Robotics Product Overview: BlueROV2 R3',topic:'rov bluerov2 product overview underwater robotics',desc:'A direct video overview of the BlueROV2 platform and its features.',url:'https://www.youtube.com/watch?v=GY0PfnvzzW4'},
+{title:'Make an Arduino ROV',topic:'arduino rov build tutorial underwater vehicle',desc:'A practical DIY ROV build video using Arduino-based control ideas.',url:'https://www.youtube.com/watch?v=wRco4tGXrzw'},
+{title:'Building a Remotely Operated Vehicle using PVC Pipe',topic:'rov build pvc pipe diy underwater robot',desc:'A direct build-oriented ROV video for simple vehicle construction.',url:'https://www.youtube.com/watch?v=Z41XVzcre4A'},
+{title:'BlueROV2 Build Guide',topic:'bluerov2 build guide assembly underwater robotics',desc:'A direct guide-style video about building a BlueROV-style platform.',url:'https://www.youtube.com/watch?v=yJcbAw-JYN0'},
+{title:'NMUC ROV Pilot Technician Training',topic:'rov pilot technician training offshore underwater',desc:'A direct training video about ROV pilot technician skills and operations.',url:'https://www.youtube.com/watch?v=hdRTyWbIdB4'},
+{title:'ROV Pilots: The Underwater Job',topic:'rov pilot career underwater job offshore',desc:'A direct career-focused video about the ROV pilot profession.',url:'https://www.youtube.com/watch?v=rDlWiD_apS8'},
+{title:'Introduction to SeaPerch',topic:'seaperch rov student underwater robotics',desc:'A beginner-friendly ROV education video for students.',url:'https://www.youtube.com/watch?v=zyP_EpKNMJQ'},
+{title:'Station Keeping for ROV Operations',topic:'rov station keeping dvl underwater operation',desc:'A direct video about station keeping and ROV positioning support.',url:'https://www.youtube.com/watch?v=luUU9lve43k'},
+{title:'PIVOT Basic Movement',topic:'rov basic movement navigation pilot training',desc:'A direct ROV movement and piloting basics video.',url:'https://www.youtube.com/watch?v=FF34GnfxCs4'},
+{title:'Work Class ROV Simulator and Manipulator Training',topic:'work class rov simulator manipulator training',desc:'A direct video showing simulator and manipulator training concepts.',url:'https://www.youtube.com/watch?v=RFfrm7WnjyE'},
+{title:'UUV Simulation Software Systems',topic:'uuv simulation software underwater robotics training',desc:'A direct video related to underwater robotics simulation and training.',url:'https://www.youtube.com/watch?v=N6dZSeT3Stk'},
+{title:'Build an ESP32 RC Submarine with FPV Camera',topic:'esp32 submarine fpv camera underwater build',desc:'A direct DIY underwater vehicle video with FPV camera ideas.',url:'https://www.youtube.com/watch?v=d-2uSKn9rYs'}
 ];
 function initVideos(){
  const grid=document.getElementById('videoGrid'); if(!grid) return;
@@ -84,7 +92,7 @@ function initVideos(){
  function render(){
   const kw=input.value.toLowerCase();
   const filtered=videos.filter(v=>!kw||`${v.title} ${v.topic} ${v.desc}`.toLowerCase().includes(kw));
-  grid.innerHTML=filtered.map(v=>`<article class="video-card"><div class="video-thumb">▶</div><div><h3>${v.title}</h3><p>${v.desc}</p><a class="btn primary" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=${encodeURIComponent(v.query)}">Watch Videos →</a></div></article>`).join('');
+  grid.innerHTML=filtered.map(v=>`<article class="video-card"><div class="video-thumb">▶</div><div><h3>${v.title}</h3><p>${v.desc}</p><a class="btn primary" target="_blank" rel="noopener noreferrer" href="${v.url}">Watch Videos →</a></div></article>`).join('');
  }
  input.addEventListener('input',render); render();
 }
@@ -92,3 +100,19 @@ initVideos();
 
 const applicationForm=document.getElementById('applicationForm');
 if(applicationForm){applicationForm.addEventListener('submit',e=>{e.preventDefault();document.getElementById('applicationMessage').textContent='Application received. Thank you for your interest!';applicationForm.reset();});}
+
+
+// Newsletter subscribe demo.
+// GitHub Pages is static, so it cannot send automated email by itself.
+// This opens a ready-to-send welcome email draft to the entered address.
+document.querySelectorAll('.subscribe-form').forEach(form=>{
+  form.addEventListener('submit', e=>{
+    e.preventDefault();
+    const email = form.querySelector('input[name="email"]').value.trim();
+    const msg = form.parentElement.querySelector('.subscribe-message');
+    const subject = 'Welcome to Deep Dive Robotics';
+    const body = `Welcome to Deep Dive Robotics!\n\nAre you ready to dive into the depths of underwater robotics with us? If so, stay tuned for the blog posts, platform updates, ROV learning resources, and engineering news we will send every week.\n\nTogether, we will explore the future of underwater robotics one dive at a time.\n\nDeepDive Technologies`;
+    if(msg) msg.textContent = 'Opening a ready-to-send welcome email draft...';
+    window.location.href = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+});
