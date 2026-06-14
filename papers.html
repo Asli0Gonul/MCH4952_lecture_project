@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research Paper Finder — Deep Dive Robotics</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="papers">
+  <nav class="navbar"><div class="nav-inner"><a href="index.html" class="nav-logo"><span class="nav-logo-icon">DD</span>Deep Dive Robotics</a><button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="jobs.html">Jobs</a></li><li><a href="papers.html" class="active">Papers</a></li><li><a href="careers.html">Careers</a></li><li><a href="about.html">About</a></li></ul></div></nav>
+
+  <header class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Research Discovery</span>
+      <h1>Research Paper Finder</h1>
+      <p>Search underwater robotics topics such as ROV control, AUV navigation, marine perception, buoyancy control, and thruster optimization.</p>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <div class="notice">This page uses sample research data. The JavaScript structure includes comments for future OpenAlex or Crossref API integration.</div>
+      <div class="filter-panel">
+        <input id="paperKeyword" type="search" placeholder="Enter topic: underwater robotics, ROV control..." />
+        <select id="paperYear"><option value="">All years</option></select>
+        <select id="paperSource"><option value="">All sources</option></select>
+        <select id="paperSort"><option value="relevance">Sort by relevance</option><option value="newest">Newest first</option></select>
+        <label class="checkbox-row"><input type="checkbox" id="paperOpenAccess" /> Open access only</label>
+      </div>
+      <div class="results-meta"><span id="paperCount"></span></div>
+      <div id="papersResults" class="results-grid"></div>
+    </div>
+  </main>
+
+  <footer class="footer"><div class="container footer-bottom"><span>© 2026 DeepDive Technologies</span><span>MCH4952 Lecture Project</span></div></footer>
+  <script src="script.js"></script>
+</body>
+</html>

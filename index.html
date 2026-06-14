@@ -1,145 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MCH4952 Lecture Project</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Georgia, "Times New Roman", serif;
-      line-height: 1.6;
-      color: #2c3e50;
-      background-color: #f8f9fa;
-    }
-
-    header {
-      background-color: #1a365d;
-      color: #ffffff;
-      text-align: center;
-      padding: 3rem 1.5rem;
-    }
-
-    header h1 {
-      font-size: 2.25rem;
-      font-weight: normal;
-      letter-spacing: 0.02em;
-      margin-bottom: 0.5rem;
-    }
-
-    header p {
-      font-size: 1.1rem;
-      opacity: 0.9;
-    }
-
-    main {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 2.5rem 1.5rem;
-    }
-
-    section {
-      background-color: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 6px;
-      padding: 2rem;
-      margin-bottom: 1.5rem;
-    }
-
-    section h2 {
-      font-size: 1.35rem;
-      color: #1a365d;
-      margin-bottom: 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid #e2e8f0;
-    }
-
-    section p {
-      margin-bottom: 1rem;
-    }
-
-    section p:last-child {
-      margin-bottom: 0;
-    }
-
-    footer {
-      background-color: #1a365d;
-      color: #ffffff;
-      text-align: center;
-      padding: 2rem 1.5rem;
-      margin-top: 1rem;
-    }
-
-    footer h2 {
-      font-size: 1.25rem;
-      font-weight: normal;
-      margin-bottom: 0.75rem;
-    }
-
-    footer p {
-      font-size: 0.95rem;
-      opacity: 0.9;
-      margin-bottom: 0.35rem;
-    }
-
-    footer a {
-      color: #90cdf4;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deep Dive Robotics — Integrated Underwater Robotics Platform</title>
+  <meta name="description" content="Integrated learning and engineering tools for underwater robotics. ROV design tools, learning paths, research papers, and career opportunities." />
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body data-page="home">
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><span class="nav-logo-icon">DD</span>Deep Dive Robotics</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="jobs.html">Jobs</a></li>
+        <li><a href="papers.html">Papers</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+  </nav>
 
-  <header>
-    <h1>MCH4952 Lecture Project</h1>
-    <p>Mechanical Engineering Course Project</p>
+  <header class="hero hero-home">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="eyebrow">DeepDive Technologies Project</span>
+      <h1>Deep Dive Robotics</h1>
+      <p class="subtitle">Integrated learning, engineering tools, research discovery, and career support for underwater robotics.</p>
+      <div class="hero-cta">
+        <a href="#tools" class="btn btn-primary">Explore Tools &rarr;</a>
+        <a href="jobs.html" class="btn btn-secondary">Find ROV Jobs</a>
+        <a href="papers.html" class="btn btn-secondary">Search Papers</a>
+      </div>
+    </div>
   </header>
 
-  <main>
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Everything You Need in One Platform</h2>
+        <p>Design tools, structured learning, technical resources, papers, and career opportunities for underwater robotics.</p>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <div class="card-icon">⚙</div>
+          <h3>Engineering Tools</h3>
+          <p>Professional calculators and estimators for buoyancy, thruster sizing, battery life, and ROV component selection.</p>
+          <a href="#tools" class="card-link">View tools &rarr;</a>
+        </article>
+        <article class="card">
+          <div class="card-icon">📘</div>
+          <h3>Learning Paths</h3>
+          <p>Structured learning content that connects mechanical design, electronics, control, perception, and underwater communication.</p>
+          <a href="about.html" class="card-link">Start learning &rarr;</a>
+        </article>
+        <article class="card">
+          <div class="card-icon">📄</div>
+          <h3>Technical Resources</h3>
+          <p>Find research papers, reports, references, and datasets related to subsea and marine robotics.</p>
+          <a href="papers.html" class="card-link">Browse resources &rarr;</a>
+        </article>
+        <article class="card">
+          <div class="card-icon">🎓</div>
+          <h3>Career Support</h3>
+          <p>Discover ROV, AUV, offshore robotics, marine perception, and embedded systems opportunities with smart filters.</p>
+          <a href="jobs.html" class="card-link">Explore jobs &rarr;</a>
+        </article>
+      </div>
+    </div>
+  </section>
 
-    <section id="introduction">
-      <h2>Introduction</h2>
-      <p>
-        This website presents the lecture project for MCH4952. The project explores
-        key concepts in mechanical engineering through research, analysis, and
-        practical application.
-      </p>
-      <p>
-        Use this page as a central reference for the project overview, objectives,
-        and contact information.
-      </p>
-    </section>
+  <section class="section section-alt" id="tools">
+    <div class="container">
+      <div class="section-header-row">
+        <div>
+          <h2>Featured Tools</h2>
+          <p>Demo tools designed for early-stage underwater vehicle design decisions.</p>
+        </div>
+        <a href="about.html" class="card-link">View all tools &rarr;</a>
+      </div>
+      <div class="featured-grid">
+        <article class="featured-card"><div class="card-icon">⚖</div><div><h3>Buoyancy Calculator</h3><p>Estimate buoyant force, displacement volume, and ballast requirement.</p></div><span class="arrow">→</span></article>
+        <article class="featured-card"><div class="card-icon">⚡</div><div><h3>Thruster Estimator</h3><p>Estimate required thrust and power for ROV propulsion systems.</p></div><span class="arrow">→</span></article>
+        <article class="featured-card"><div class="card-icon">🔋</div><div><h3>Battery Life Estimator</h3><p>Predict mission runtime based on system load and battery capacity.</p></div><span class="arrow">→</span></article>
+        <article class="featured-card"><div class="card-icon">🛠</div><div><h3>ROV Component Selection</h3><p>Compare cameras, manipulators, sensors, tethers, and control components.</p></div><span class="arrow">→</span></article>
+      </div>
+    </div>
+  </section>
 
-    <section id="objective">
-      <h2>Objective</h2>
-      <p>
-        The primary objective of this project is to demonstrate understanding of
-        course material by applying engineering principles to a defined problem
-        or design challenge.
-      </p>
-      <p>
-        Specific goals include analyzing the problem, developing a solution
-        approach, and documenting findings in a clear and structured format.
-      </p>
-    </section>
+  <section class="section">
+    <div class="container">
+      <div class="split-section">
+        <div class="info-block">
+          <h3>The Problem</h3>
+          <p>Underwater robotics requires multidisciplinary knowledge, but information is often scattered across papers, forums, courses, calculators, and vendor websites.</p>
+          <ul>
+            <li>Mechanical, electronics, control, and communication knowledge are fragmented.</li>
+            <li>Students spend time switching between unrelated platforms.</li>
+            <li>Engineering calculators are not always accessible for early-stage design.</li>
+            <li>ROV and marine robotics career paths are difficult to discover.</li>
+          </ul>
+        </div>
+        <div class="info-block solution">
+          <h3>Our Solution</h3>
+          <p>Deep Dive Robotics brings learning, design, research, and career discovery into one accessible platform.</p>
+          <ul>
+            <li>Engineering tools accessible in 2–3 clicks.</li>
+            <li>Research paper finder with topic-based filters.</li>
+            <li>ROV and marine robotics job board.</li>
+            <li>Clear learning paths for students and early-stage engineers.</li>
+          </ul>
+        </div>
+      </div>
 
-  </main>
+      <div class="metrics-strip">
+        <div class="metric"><div class="value">40×</div><div class="label">Faster design access</div></div>
+        <div class="metric"><div class="value">2–3</div><div class="label">Clicks to key tools</div></div>
+        <div class="metric"><div class="value">30–40%</div><div class="label">Less platform switching</div></div>
+      </div>
 
-  <footer id="contact">
-    <h2>Contact</h2>
-    <p>MCH4952 Lecture Project</p>
-    <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-    <p>&copy; 2026 MCH4952 Project. All rights reserved.</p>
+      <div class="image-panel">
+        <img src="assets/platform-interface.png" alt="Deep Dive Robotics platform interface" />
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo"><span class="nav-logo-icon">DD</span>DeepDive Technologies</a>
+        <p>Empowering engineers and students to design, learn, and innovate in underwater robotics.</p>
+      </div>
+      <div><h4>Platform</h4><ul class="footer-links"><li><a href="#tools">Tools</a></li><li><a href="papers.html">Papers</a></li><li><a href="jobs.html">Jobs</a></li></ul></div>
+      <div><h4>Company</h4><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="careers.html">Careers</a></li></ul></div>
+    </div>
+    <div class="footer-bottom container"><span>© 2026 DeepDive Technologies</span><span>MCH4952 Lecture Project</span></div>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
