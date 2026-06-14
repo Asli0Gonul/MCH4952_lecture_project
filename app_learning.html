@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Learning — Deep Dive Robotics App</title>
+  <meta name="theme-color" content="#061936" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="deepdive-logo.svg" />
+  <link rel="stylesheet" href="app.css" />
+
+  <style>
+    body {
+      padding-bottom: 92px;
+    }
+
+    .mobile-learning-header {
+      background:
+        radial-gradient(circle at 80% 15%, rgba(98, 214, 255, .30), transparent 32%),
+        linear-gradient(135deg, #061936, #0b3974);
+      color: white;
+      padding: 28px 18px 24px;
+      border-radius: 0 0 30px 30px;
+      box-shadow: 0 16px 35px rgba(4, 22, 50, .18);
+      margin-bottom: 18px;
+    }
+
+    .mobile-learning-header img {
+      width: 180px;
+      margin-bottom: 20px;
+    }
+
+    .mobile-learning-header span {
+      display: inline-block;
+      color: #8eeaff;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-weight: 900;
+      font-size: .75rem;
+      margin-bottom: 8px;
+    }
+
+    .mobile-learning-header h1 {
+      margin: 0 0 10px;
+      font-size: 2.25rem;
+      line-height: .98;
+      letter-spacing: -.05em;
+    }
+
+    .mobile-learning-header p {
+      margin: 0;
+      color: #dcecff;
+      font-size: 1rem;
+    }
+
+    .learning-app-content {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 0 16px 28px;
+    }
+
+    .learning-app-intro {
+      background: white;
+      border: 1px solid #d9e6f7;
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 14px 30px rgba(4, 22, 50, .12);
+      margin-bottom: 14px;
+    }
+
+    .learning-app-intro h2 {
+      margin: 0 0 8px;
+      color: #071735;
+      font-size: 1.35rem;
+    }
+
+    .learning-app-intro p {
+      margin: 0;
+      color: #61708a;
+    }
+
+    .mobile-accordion {
+      display: grid;
+      gap: 12px;
+    }
+
+    .mobile-accordion-item {
+      background: white;
+      border: 1px solid #d9e6f7;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(4, 22, 50, .10);
+    }
+
+    .mobile-accordion-btn {
+      width: 100%;
+      border: 0;
+      background: white;
+      display: grid;
+      grid-template-columns: 42px 1fr 30px;
+      gap: 10px;
+      align-items: center;
+      text-align: left;
+      padding: 16px;
+      cursor: pointer;
+    }
+
+    .mobile-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: #e6f3ff;
+      color: #0e64e8;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: .9rem;
+    }
+
+    .mobile-title h3 {
+      margin: 0 0 4px;
+      color: #071735;
+      font-size: 1.05rem;
+    }
+
+    .mobile-title p {
+      margin: 0;
+      color: #61708a;
+      font-size: .86rem;
+      line-height: 1.35;
+    }
+
+    .mobile-plus {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #0e74ff;
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      transition: transform .25s ease;
+    }
+
+    .mobile-accordion-item.open .mobile-plus {
+      transform: rotate(45deg);
+    }
+
+    .mobile-accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease;
+      border-top: 1px solid transparent;
+    }
+
+    .mobile-accordion-item.open .mobile-accordion-content {
+      border-top-color: #e4edf8;
+    }
+
+    .mobile-inner {
+      padding: 0 16px 18px;
+      color: #34455f;
+    }
+
+    .mobile-inner p {
+      color: #34455f;
+      margin: 12px 0;
+    }
+
+    .mobile-inner ul {
+      padding-left: 18px;
+      margin: 10px 0;
+    }
+
+    .mobile-inner li {
+      margin: 8px 0;
+    }
+
+    .mobile-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 12px;
+    }
+
+    .mobile-tags span {
+      background: #e6f3ff;
+      color: #085bae;
+      border-radius: 999px;
+      padding: 5px 9px;
+      font-weight: 800;
+      font-size: .76rem;
+    }
+
+    .learning-order {
+      margin-top: 14px;
+      background: #061936;
+      color: white;
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 14px 30px rgba(4, 22, 50, .14);
+    }
+
+    .learning-order h2 {
+      margin: 0 0 8px;
+      color: white;
+      font-size: 1.25rem;
+    }
+
+    .learning-order p {
+      margin: 0;
+      color: #dcecff;
+    }
+
+    .app-bottom-nav {
+      position: fixed;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: min(520px, 100%);
+      background: #061936;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      padding: 8px 8px 10px;
+      border-radius: 22px 22px 0 0;
+      box-shadow: 0 -12px 30px rgba(4,22,50,.22);
+      z-index: 20;
+    }
+
+    .app-bottom-nav a {
+      color: #cfe1fa;
+      border-radius: 16px;
+      padding: 8px 4px;
+      text-align: center;
+      font-weight: 800;
+      text-decoration: none;
+      font-size: .72rem;
+    }
+
+    .app-bottom-nav a.active {
+      background: #123866;
+      color: white;
+    }
+
+    .app-bottom-nav span {
+      font-size: 1.25rem;
+      display: block;
+      line-height: 1.1;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="learning-app-content">
+    <header class="mobile-learning-header">
+      <img src="deepdive-logo.svg" alt="Deep Dive Robotics logo" />
+      <span>Learning path</span>
+      <h1>ROV Learning</h1>
+      <p>Tap each topic to explore underwater robotics step by step.</p>
+    </header>
+
+    <section class="learning-app-intro">
+      <h2>Structured Learning for ROV Beginners</h2>
+      <p>
+        ROV design connects mechanics, electronics, power, software, sensors, communication, and testing.
+        This mobile page turns each topic into a short but detailed learning section.
+      </p>
+    </section>
+
+    <section class="mobile-accordion">
+
+      <article class="mobile-accordion-item open">
+        <button class="mobile-accordion-btn" type="button">
+          <span class="mobile-num">01</span>
+          <span class="mobile-title">
+            <h3>ROV Fundamentals</h3>
+            <p>What an ROV is, where it is used, and which subsystems it includes.</p>
+          </span>
+          <span class="mobile-plus">+</span>
+        </button>
+        <div class="mobile-accordion-content">
+          <div class="mobile-inner">
+            <p>
+              A Remotely Operated Vehicle, or ROV, is an underwater robot controlled by an operator from the surface.
+              It usually communicates through a tether that carries commands, video, and sensor data.
+            </p>
+            <p>
+              ROVs are used for inspection, underwater research, offshore maintenance, search operations, education,
+              and underwater photography. A typical ROV includes a frame, flotation, ballast, thrusters, camera,
+              lights, electronics, power system, and tether.
+            </p>
+            <ul>
+              <li><b>Observation-class ROVs:</b> small vehicles for inspection and learning.</li>
+              <li><b>Work-class ROVs:</b> industrial vehicles with manipulators and tooling.</li>
+              <li><b>Educational ROVs:</b> student-built platforms for hands-on engineering.</li>
+            </ul>
+            <div class="mobile-tags"><span>ROV basics</span><span>Tethered control</span><span>Vehicle systems</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="mobile-accordion-item">
+        <button class="mobile-accordion-btn" type="button">
+          <span class="mobile-num">02</span>
+          <span class="mobile-title">
+            <h3>Mechanical Design</h3>
+            <p>Frame, stability, buoyancy, waterproofing, and component placement.</p>
+          </span>
+          <span class="mobile-plus">+</span>
+        </button>
+        <div class="mobile-accordion-content">
+          <div class="mobile-inner">
+            <p>
+              Mechanical design determines how strong, stable, and practical the ROV will be.
+              The frame carries thrusters, electronics housings, cameras, lights, and payloads while protecting them from impacts.
+            </p>
+            <p>
+              Stability is a key design goal. The center of buoyancy should generally be above the center of gravity.
+              Batteries and heavy parts are usually placed lower, while flotation is placed higher to reduce rolling.
+            </p>
+            <ul>
+              <li><b>Frame:</b> supports and protects the vehicle.</li>
+              <li><b>Buoyancy:</b> balances the vehicle weight.</li>
+              <li><b>Ballast:</b> fine-tunes neutral buoyancy.</li>
+              <li><b>Waterproofing:</b> protects electronics through sealed enclosures and connectors.</li>
+            </ul>
+            <div class="mobile-tags"><span>Frame</span><span>Buoyancy</span><span>Stability</span><span>Waterproofing</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="mobile-accordion-item">
+        <button class="mobile-accordion-btn" type="button">
+          <span class="mobile-num">03</span>
+          <span class="mobile-title">
+            <h3>Electronics & Power</h3>
+            <p>Batteries, regulators, ESCs, wiring, and protection circuits.</p>
+          </span>
+          <span class="mobile-plus">+</span>
+        </button>
+        <div class="mobile-accordion-content">
+          <div class="mobile-inner">
+            <p>
+              The electronics system powers and controls the ROV. A typical setup includes a battery or surface power supply,
+              voltage regulators, ESCs, a controller, sensors, camera, and communication hardware.
+            </p>
+            <p>
+              Underwater electronics must be designed carefully because leakage, current spikes, voltage drop, and overheating
+              can damage the system. Good wiring, fuses, waterproof connectors, and emergency stop functions improve safety.
+            </p>
+            <ul>
+              <li><b>Battery capacity:</b> affects runtime and vehicle weight.</li>
+              <li><b>Regulators:</b> convert voltage for sensors and computers.</li>
+              <li><b>ESCs:</b> control brushless thrusters.</li>
+              <li><b>Protection:</b> fuses and emergency stops reduce risk.</li>
+            </ul>
+            <div class="mobile-tags"><span>Battery</span><span>ESC</span><span>Power</span><span>Safety</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="mobile-accordion-item">
+        <button class="mobile-accordion-btn" type="button">
+          <span class="mobile-num">04</span>
+          <span class="mobile-title">
+            <h3>Control & Software</h3>
+            <p>Manual control, thruster mixing, feedback control, and autonomy basics.</p>
+          </span>
+          <span class="mobile-plus">+</span>
+        </button>
+        <div class="mobile-accordion-content">
+          <div class="mobile-inner">
+            <p>
+              Control software converts joystick or mission commands into thruster outputs. In a simple ROV, commands
+              such as forward, vertical movement, yaw, and lateral motion are mixed across multiple thrusters.
+            </p>
+            <p>
+              More advanced systems use feedback from sensors such as depth sensors and IMUs. These sensors can support
+              functions such as depth hold, heading hold, station keeping, visual tracking, or basic autonomy.
+            </p>
+            <ul>
+              <li><b>Manual mode:</b> operator directly controls movement.</li>
+              <li><b>Thruster mixing:</b> distributes commands to each motor.</li>
+              <li><b>Feedback control:</b> maintains depth, heading, or position.</li>
+              <li><b>Autonomy:</b> adds perception and decision-making.</li>
+            </ul>
+            <div class="mobile-tags"><span>Joystick</span><span>PID</span><span>Thruster mixing</span><span>Autonomy</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="mobile-accordion-item">
+        <button class="mobile-accordion-btn" type="button">
+          <span class="mobile-num">05</span>
+          <span class="mobile-title">
+            <h3>Sensors & Perception</h3>
+            <p>Cameras, depth sensors, IMUs, sonar, and computer vision.</p>
+          </span>
+          <span class="mobile-plus">+</span>
+        </button>
+        <div class="mobile-accordion-content">
+          <div class="mobile-inner">
+            <p>
+              Sensors help the ROV understand both its own motion and the underwater environment. Cameras provide visual
+              feedback, depth sensors measure vertical position, and IMUs estimate orientation.
+            </p>
+            <p>
+              Advanced ROVs can use sonar and computer vision for navigation, mapping, inspection, and object detection.
+              Underwater perception is difficult because visibility, lighting, particles, and color loss can reduce image quality.
+            </p>
+            <ul>
+              <li><b>Camera:</b> live view for piloting and inspection.</li>
+              <li><b>Depth sensor:</b> depth monitoring and depth hold.</li>
+              <li><b>IMU:</b> roll, pitch, and yaw estimation.</li>
+              <li><b>Sonar:</b> object detection in poor visibility.</li>
+            </ul>
+            <div class="mobile-tags"><span>Camera</span><span>IMU</span><span>Depth</span><span>Sonar</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="mobile-accordion-item">
+        <button class="mobile-accordion-btn" type="button">
+          <span class="mobile-num">06</span>
+          <span class="mobile-title">
+            <h3>Communication & Tether</h3>
+            <p>How commands, video, and data travel between the surface and the vehicle.</p>
+          </span>
+          <span class="mobile-plus">+</span>
+        </button>
+        <div class="mobile-accordion-content">
+          <div class="mobile-inner">
+            <p>
+              Most ROVs use a tether because radio signals do not travel well underwater. The tether may carry power,
+              control data, video, and sensor information between the vehicle and the surface station.
+            </p>
+            <p>
+              Tether design affects movement, drag, and reliability. A good tether should be strong, flexible, and easy to manage.
+              Advanced systems may use Ethernet, fiber optics, or surface power transmission.
+            </p>
+            <ul>
+              <li><b>Control data:</b> sends pilot commands.</li>
+              <li><b>Video stream:</b> returns camera feed.</li>
+              <li><b>Power:</b> onboard battery or surface supply.</li>
+              <li><b>Tether management:</b> prevents tangling and excessive drag.</li>
+            </ul>
+            <div class="mobile-tags"><span>Tether</span><span>Ethernet</span><span>Video</span><span>Surface station</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="mobile-accordion-item">
+        <button class="mobile-accordion-btn" type="button">
+          <span class="mobile-num">07</span>
+          <span class="mobile-title">
+            <h3>Testing & Safety</h3>
+            <p>Bench tests, leak tests, pool tests, and safe operation.</p>
+          </span>
+          <span class="mobile-plus">+</span>
+        </button>
+        <div class="mobile-accordion-content">
+          <div class="mobile-inner">
+            <p>
+              Testing should begin before the ROV enters water. Electronics, wiring, motor direction, camera feed,
+              and communication should be verified on the bench. Waterproof enclosures should be checked before powering the system underwater.
+            </p>
+            <p>
+              Water tests should start in a controlled pool or tank. First tests should focus on buoyancy, stability,
+              basic movement, and emergency stop behavior. After each test, the vehicle should be inspected for leaks and damage.
+            </p>
+            <ul>
+              <li><b>Bench test:</b> verify electronics and software.</li>
+              <li><b>Leak test:</b> check enclosures and connectors.</li>
+              <li><b>Pool test:</b> validate buoyancy and control.</li>
+              <li><b>Safety:</b> use fuses, emergency stop, and supervision.</li>
+            </ul>
+            <div class="mobile-tags"><span>Leak test</span><span>Pool test</span><span>Safety</span><span>Checklist</span></div>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <section class="learning-order">
+      <h2>Suggested Order</h2>
+      <p>
+        Start with ROV Fundamentals, continue with Mechanical Design and Electronics & Power,
+        then move into Control, Sensors, Communication, and finally Testing & Safety.
+      </p>
+    </section>
+  </main>
+
+  <nav class="app-bottom-nav">
+    <a href="index.html"><span>⌂</span>Home</a>
+    <a href="index.html#tools"><span>⚙</span>Tools</a>
+    <a class="active" href="learning.html"><span>▤</span>Learning</a>
+    <a href="index.html#videos"><span>▶</span>Videos</a>
+    <a href="index.html#jobs"><span>⌁</span>Jobs</a>
+  </nav>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js");
+      });
+    }
+
+    document.querySelectorAll('.mobile-accordion-item').forEach((item) => {
+      const button = item.querySelector('.mobile-accordion-btn');
+      const content = item.querySelector('.mobile-accordion-content');
+
+      function setHeight() {
+        if (item.classList.contains('open')) {
+          content.style.maxHeight = content.scrollHeight + 'px';
+        } else {
+          content.style.maxHeight = '0px';
+        }
+      }
+
+      button.addEventListener('click', () => {
+        item.classList.toggle('open');
+        setHeight();
+      });
+
+      setHeight();
+      window.addEventListener('resize', setHeight);
+    });
+  </script>
+</body>
+</html>
