@@ -1,139 +1,94 @@
-// Navigation
-document.querySelectorAll(".nav-toggle").forEach((button) => {
-  button.addEventListener("click", () => {
-    const navLinks = document.querySelector(".nav-links");
-    navLinks.classList.toggle("open");
-    button.setAttribute("aria-expanded", navLinks.classList.contains("open"));
+const transition=document.querySelector('.page-transition');
+document.querySelectorAll('a[href$=".html"], a[href*=".html#"]').forEach(link=>{
+  link.addEventListener('click',e=>{
+    const href=link.getAttribute('href');
+    if(!href || href.startsWith('http') || link.target==='_blank') return;
+    e.preventDefault();
+    transition?.classList.add('active');
+    setTimeout(()=>{window.location.href=href},280);
+  });
+});
+document.querySelectorAll('.nav-toggle').forEach(btn=>btn.addEventListener('click',()=>document.querySelector('.nav-menu')?.classList.toggle('open')));
+
+document.querySelectorAll('.calc-form').forEach(form=>{
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    const data=Object.fromEntries(new FormData(form).entries());
+    const calc=form.dataset.calc;
+    if(calc==='buoyancy'){
+      const density=Number(data.density), volume=Number(data.volume)/1000, mass=Number(data.mass), g=9.81;
+      const buoyant=density*g*volume;
+      const weight=mass*g;
+      const net=buoyant-weight;
+      document.getElementById('buoyancyResult').innerHTML=`Buoyant force: <b>${buoyant.toFixed(2)} N</b><br>Vehicle weight: <b>${weight.toFixed(2)} N</b><br>Net buoyancy: <b>${net.toFixed(2)} N</b><br>${net>0?'Vehicle is positively buoyant. Add ballast or reduce volume.':net<0?'Vehicle is negatively buoyant. Add flotation or reduce mass.':'Vehicle is approximately neutrally buoyant.'}`;
+    }
+    if(calc==='thruster'){
+      const drag=Number(data.drag), count=Number(data.count), safety=Number(data.safety);
+      const total=drag*safety;
+      const each=total/count;
+      document.getElementById('thrusterResult').innerHTML=`Required total thrust: <b>${total.toFixed(2)} N</b><br>Required thrust per thruster: <b>${each.toFixed(2)} N</b><br>Approx. per thruster: <b>${(each/9.81).toFixed(2)} kgf</b>`;
+    }
+    if(calc==='battery'){
+      const voltage=Number(data.voltage), capacity=Number(data.capacity), power=Number(data.power), usable=Number(data.usable)/100;
+      const wh=voltage*capacity*usable;
+      const hours=wh/power;
+      document.getElementById('batteryResult').innerHTML=`Usable energy: <b>${wh.toFixed(1)} Wh</b><br>Estimated runtime: <b>${hours.toFixed(2)} hours</b><br>Estimated runtime: <b>${(hours*60).toFixed(0)} minutes</b>`;
+    }
+    if(calc==='component'){
+      const mission=data.mission, depth=Number(data.depth);
+      const base={
+        inspection:['HD camera','LED lighting','depth sensor','4-thruster frame','stable tether'],
+        research:['camera','sampling mount','temperature sensor','modular payload rail','data logger'],
+        competition:['lightweight frame','manual control system','simple camera','battery monitor','quick repair access'],
+        mapping:['sonar or stereo camera','IMU/depth sensor','stable navigation frame','large battery','data storage']
+      };
+      const depthNote=depth>50?'Use pressure-rated enclosures and connectors for higher depth.':'Standard shallow-water housings may be acceptable for prototype testing.';
+      document.getElementById('componentResult').innerHTML=`Recommended components:<br><b>${base[mission].join(', ')}</b><br><br>${depthNote}`;
+    }
   });
 });
 
-// -------------------- Demo Job Search --------------------
-// This is a static demo dataset for GitHub Pages.
-// Later, a backend or serverless deployment can call a real job API such as Adzuna or SerpAPI.
-// Never expose private API keys directly in frontend JavaScript.
-
-const jobs = [
-  {title:"ROV Systems Engineering Intern", company:"Blue Ocean Robotics", country:"Norway", type:"Internship", experience:"Student", mode:"On-site", description:"Support testing and documentation of observation-class ROV systems for marine research.", tags:["ROV","Testing","Marine"], link:"#"},
-  {title:"Marine Robotics Software Engineer", company:"AquaMotion Labs", country:"United Kingdom", type:"Full-time", experience:"Junior", mode:"Hybrid", description:"Develop autonomy modules for underwater inspection robots using ROS and sensor fusion.", tags:["ROS","AUV","Autonomy"], link:"#"},
-  {title:"Embedded Systems Engineer — Underwater Vehicles", company:"Subsea Dynamics", country:"Germany", type:"Full-time", experience:"Mid-level", mode:"On-site", description:"Design embedded control boards and power interfaces for subsea robotics platforms.", tags:["Embedded","Power","Control"], link:"#"},
-  {title:"ROV Pilot Technician", company:"Offshore Survey Group", country:"United States", type:"Contract", experience:"Junior", mode:"On-site", description:"Operate and maintain work-class ROV systems for offshore inspection missions.", tags:["ROV Pilot","Offshore","Inspection"], link:"#"},
-  {title:"Computer Vision Intern — Marine Perception", company:"DeepVision Robotics", country:"Türkiye", type:"Internship", experience:"Student", mode:"Hybrid", description:"Work on underwater image processing, object detection, and dataset annotation.", tags:["Computer Vision","YOLO","Perception"], link:"#"},
-  {title:"Robotics Research Assistant", company:"Marine AI Institute", country:"Canada", type:"Part-time", experience:"Student", mode:"Remote", description:"Assist with literature review and simulation experiments for AUV navigation.", tags:["Research","AUV","Navigation"], link:"#"},
-  {title:"Senior Subsea Robotics Engineer", company:"OceanWorks Advanced Systems", country:"Netherlands", type:"Full-time", experience:"Senior", mode:"Hybrid", description:"Lead mechanical and system integration for next-generation subsea robotic platforms.", tags:["Subsea","Mechanical","Integration"], link:"#"},
-  {title:"Controls Engineer — ROV Manipulator", company:"Tethys Robotics", country:"France", type:"Full-time", experience:"Mid-level", mode:"On-site", description:"Develop control algorithms for underwater robotic arms and manipulation tasks.", tags:["Control","Manipulator","ROV"], link:"#"}
+const jobs=[
+{title:'ROV Systems Engineering Intern',company:'Blue Ocean Robotics',country:'Norway',type:'Internship',experience:'Student',mode:'On-site',description:'Support testing and documentation of observation-class ROV systems for marine research.',tags:['ROV','Testing','Marine'],link:'https://www.linkedin.com/jobs/search/?keywords=ROV%20Systems%20Engineering%20Intern&location=Norway'},
+{title:'Marine Robotics Software Engineer',company:'AquaMotion Labs',country:'United Kingdom',type:'Full-time',experience:'Junior',mode:'Hybrid',description:'Develop autonomy modules for underwater inspection robots using ROS and sensor fusion.',tags:['ROS','AUV','Autonomy'],link:'https://www.linkedin.com/jobs/search/?keywords=Marine%20Robotics%20Software%20Engineer&location=United%20Kingdom'},
+{title:'Embedded Systems Engineer — Underwater Vehicles',company:'Subsea Dynamics',country:'Germany',type:'Full-time',experience:'Mid-level',mode:'On-site',description:'Design embedded control boards and power interfaces for subsea robotics platforms.',tags:['Embedded','Power','Control'],link:'https://www.linkedin.com/jobs/search/?keywords=Embedded%20Systems%20Engineer%20Underwater%20Vehicles&location=Germany'},
+{title:'ROV Pilot Technician',company:'Offshore Survey Group',country:'United States',type:'Contract',experience:'Junior',mode:'On-site',description:'Operate and maintain work-class ROV systems for offshore inspection missions.',tags:['ROV Pilot','Offshore','Inspection'],link:'https://www.indeed.com/jobs?q=ROV+Pilot+Technician&l=United+States'},
+{title:'Computer Vision Intern — Marine Perception',company:'DeepVision Robotics',country:'Türkiye',type:'Internship',experience:'Student',mode:'Hybrid',description:'Work on underwater image processing, object detection, and dataset annotation.',tags:['Computer Vision','YOLO','Perception'],link:'https://www.linkedin.com/jobs/search/?keywords=Computer%20Vision%20Intern%20Marine%20Perception&location=Türkiye'},
+{title:'Controls Engineer — ROV Manipulator',company:'Tethys Robotics',country:'France',type:'Full-time',experience:'Mid-level',mode:'On-site',description:'Develop control algorithms for underwater robotic arms and manipulation tasks.',tags:['Control','Manipulator','ROV'],link:'https://www.linkedin.com/jobs/search/?keywords=Controls%20Engineer%20ROV%20Manipulator&location=France'}
 ];
-
-function initJobsPage(){
-  const results = document.getElementById("jobsResults");
-  if(!results) return;
-
-  const countrySelect = document.getElementById("jobCountry");
-  [...new Set(jobs.map(j => j.country))].sort().forEach(country => {
-    countrySelect.insertAdjacentHTML("beforeend", `<option>${country}</option>`);
-  });
-
-  const inputs = ["jobKeyword","jobCountry","jobType","jobExperience","jobMode"].map(id => document.getElementById(id));
-  inputs.forEach(input => input.addEventListener("input", renderJobs));
-  renderJobs();
-
-  function renderJobs(){
-    const keyword = document.getElementById("jobKeyword").value.toLowerCase();
-    const country = document.getElementById("jobCountry").value;
-    const type = document.getElementById("jobType").value;
-    const experience = document.getElementById("jobExperience").value;
-    const mode = document.getElementById("jobMode").value;
-
-    const filtered = jobs.filter(job => {
-      const text = `${job.title} ${job.company} ${job.description} ${job.tags.join(" ")}`.toLowerCase();
-      return (!keyword || text.includes(keyword)) &&
-             (!country || job.country === country) &&
-             (!type || job.type === type) &&
-             (!experience || job.experience === experience) &&
-             (!mode || job.mode === mode);
-    });
-
-    document.getElementById("jobCount").textContent = `${filtered.length} job result(s) found`;
-    results.innerHTML = filtered.map(job => `
-      <article class="result-card">
-        <h3>${job.title}</h3>
-        <p class="meta">${job.company} • ${job.country} • ${job.type} • ${job.experience} • ${job.mode}</p>
-        <p>${job.description}</p>
-        <div class="tags">${job.tags.map(tag => `<span class="tag">${tag}</span>`).join("")}</div>
-        <a class="card-link" href="${job.link}">Application link &rarr;</a>
-      </article>
-    `).join("");
-  }
+function initJobs(){
+ const grid=document.getElementById('jobsResults'); if(!grid) return;
+ const country=document.getElementById('jobCountry'); [...new Set(jobs.map(j=>j.country))].sort().forEach(c=>country.insertAdjacentHTML('beforeend',`<option>${c}</option>`));
+ ['jobKeyword','jobCountry','jobType','jobExperience','jobMode'].forEach(id=>document.getElementById(id).addEventListener('input',render));
+ function render(){
+  const kw=document.getElementById('jobKeyword').value.toLowerCase(), c=document.getElementById('jobCountry').value,t=document.getElementById('jobType').value,x=document.getElementById('jobExperience').value,m=document.getElementById('jobMode').value;
+  const filtered=jobs.filter(j=>(!kw||`${j.title} ${j.company} ${j.description} ${j.tags.join(' ')}`.toLowerCase().includes(kw))&&(!c||j.country===c)&&(!t||j.type===t)&&(!x||j.experience===x)&&(!m||j.mode===m));
+  document.getElementById('jobCount').textContent=`${filtered.length} result(s) found`;
+  grid.innerHTML=filtered.map(j=>`<article class="job-card"><h3>${j.title}</h3><p><b>${j.company}</b> · ${j.country} · ${j.type} · ${j.experience} · ${j.mode}</p><p>${j.description}</p><div>${j.tags.map(tag=>`<span class="tag">${tag}</span>`).join('')}</div><a class="btn primary" target="_blank" rel="noopener noreferrer" href="${j.link}">Application Link →</a></article>`).join('');
+ }
+ render();
 }
+initJobs();
 
-// -------------------- Demo Research Paper Finder --------------------
-// Static dataset for GitHub Pages.
-// Future API integration idea:
-// fetch(`https://api.openalex.org/works?search=${encodeURIComponent(topic)}`)
-// or Crossref:
-// fetch(`https://api.crossref.org/works?query=${encodeURIComponent(topic)}`)
-
-const papers = [
-  {title:"Vision-Based Control for Remotely Operated Underwater Vehicles", authors:"K. Smith, L. Ortega", year:2024, source:"IEEE", open:true, keywords:["ROV control","vision","underwater robotics"], abstract:"A study on image-based control approaches for observation-class ROVs.", link:"#"},
-  {title:"A Review of Autonomous Underwater Vehicle Navigation Methods", authors:"M. Chen, R. Patel", year:2023, source:"Elsevier", open:false, keywords:["AUV navigation","sensor fusion","marine robotics"], abstract:"A review of navigation methods used in AUV missions, including INS, DVL, sonar, and SLAM.", link:"#"},
-  {title:"Thruster Allocation and Optimization for Underwater Robots", authors:"A. Demir, S. Yılmaz", year:2022, source:"Springer", open:true, keywords:["thruster optimization","ROV","control allocation"], abstract:"Optimization-based allocation strategies for multi-thruster underwater vehicles.", link:"#"},
-  {title:"Deep Learning for Marine Object Detection in Turbid Water", authors:"J. Brown, P. Novak", year:2025, source:"IEEE", open:true, keywords:["marine perception","object detection","YOLO"], abstract:"An evaluation of deep learning models for underwater object detection under low visibility.", link:"#"},
-  {title:"Buoyancy and Stability Considerations for Small ROV Platforms", authors:"E. Kaya, N. Foster", year:2021, source:"MDPI", open:true, keywords:["buoyancy control","stability","ROV design"], abstract:"Design guidelines for buoyancy, center of gravity, and stability in small ROVs.", link:"#"},
-  {title:"Human-Machine Interfaces for Offshore ROV Operations", authors:"S. Larsen, T. Moore", year:2020, source:"ACM", open:false, keywords:["HMI","ROV operation","offshore"], abstract:"A discussion of interface design principles for safer and clearer offshore ROV operation.", link:"#"}
+const videos=[
+{title:'What is an ROV?',topic:'rov basics underwater robotics',desc:'Introductory video search about ROV types, structure, and usage.',query:'what is an ROV underwater robotics'},
+{title:'ROV Buoyancy Explained',topic:'buoyancy stability rov',desc:'Learn buoyancy, ballast, center of gravity, and stability concepts.',query:'ROV buoyancy stability explained'},
+{title:'ROV Thrusters and Propulsion',topic:'thruster propulsion rov',desc:'Understand thruster placement, thrust direction, and control mixing.',query:'ROV thruster propulsion explained'},
+{title:'Underwater Robotics Control',topic:'control software rov auv',desc:'Control systems and software concepts for underwater vehicles.',query:'underwater robotics control ROV AUV'},
+{title:'ROV Build Tutorial',topic:'build diy rov',desc:'Practical design and build videos for student ROV platforms.',query:'student ROV build tutorial'},
+{title:'Marine Perception & Cameras',topic:'camera computer vision underwater',desc:'Video resources about underwater vision, cameras, and perception.',query:'underwater robotics computer vision camera'}
 ];
-
-function initPapersPage(){
-  const results = document.getElementById("papersResults");
-  if(!results) return;
-
-  const yearSelect = document.getElementById("paperYear");
-  [...new Set(papers.map(p => p.year))].sort((a,b)=>b-a).forEach(year => yearSelect.insertAdjacentHTML("beforeend", `<option>${year}</option>`));
-  const sourceSelect = document.getElementById("paperSource");
-  [...new Set(papers.map(p => p.source))].sort().forEach(source => sourceSelect.insertAdjacentHTML("beforeend", `<option>${source}</option>`));
-
-  ["paperKeyword","paperYear","paperSource","paperSort","paperOpenAccess"].forEach(id => document.getElementById(id).addEventListener("input", renderPapers));
-  renderPapers();
-
-  function renderPapers(){
-    const keyword = document.getElementById("paperKeyword").value.toLowerCase();
-    const year = document.getElementById("paperYear").value;
-    const source = document.getElementById("paperSource").value;
-    const sort = document.getElementById("paperSort").value;
-    const openOnly = document.getElementById("paperOpenAccess").checked;
-
-    let filtered = papers.filter(paper => {
-      const text = `${paper.title} ${paper.authors} ${paper.abstract} ${paper.keywords.join(" ")}`.toLowerCase();
-      return (!keyword || text.includes(keyword)) &&
-             (!year || String(paper.year) === year) &&
-             (!source || paper.source === source) &&
-             (!openOnly || paper.open);
-    });
-
-    if(sort === "newest") filtered = filtered.sort((a,b)=>b.year-a.year);
-
-    document.getElementById("paperCount").textContent = `${filtered.length} paper result(s) found`;
-    results.innerHTML = filtered.map(paper => `
-      <article class="result-card">
-        <h3>${paper.title}</h3>
-        <p class="meta">${paper.authors} • ${paper.year} • ${paper.source} • ${paper.open ? "Open Access" : "Limited Access"}</p>
-        <p>${paper.abstract}</p>
-        <div class="tags">${paper.keywords.map(tag => `<span class="tag">${tag}</span>`).join("")}</div>
-        <a class="card-link" href="${paper.link}">DOI / Source link &rarr;</a>
-      </article>
-    `).join("");
-  }
+function initVideos(){
+ const grid=document.getElementById('videoGrid'); if(!grid) return;
+ const input=document.getElementById('videoFilter');
+ function render(){
+  const kw=input.value.toLowerCase();
+  const filtered=videos.filter(v=>!kw||`${v.title} ${v.topic} ${v.desc}`.toLowerCase().includes(kw));
+  grid.innerHTML=filtered.map(v=>`<article class="video-card"><div class="video-thumb">▶</div><div><h3>${v.title}</h3><p>${v.desc}</p><a class="btn primary" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=${encodeURIComponent(v.query)}">Watch Videos →</a></div></article>`).join('');
+ }
+ input.addEventListener('input',render); render();
 }
+initVideos();
 
-// Careers application form
-function initApplicationForm(){
-  const form = document.getElementById("applicationForm");
-  if(!form) return;
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    document.getElementById("applicationMessage").textContent = "Application received. Thank you for your interest in DeepDive Technologies!";
-    form.reset();
-  });
-}
-
-initJobsPage();
-initPapersPage();
-initApplicationForm();
+const applicationForm=document.getElementById('applicationForm');
+if(applicationForm){applicationForm.addEventListener('submit',e=>{e.preventDefault();document.getElementById('applicationMessage').textContent='Application received. Thank you for your interest!';applicationForm.reset();});}

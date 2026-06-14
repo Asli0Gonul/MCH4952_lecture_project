@@ -1,37 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ROV & Underwater Robotics Jobs — Deep Dive Robotics</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
+<head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>ROV Jobs — Deep Dive Robotics</title><link rel="stylesheet" href="style.css" /></head>
 <body data-page="jobs">
-  <nav class="navbar"><div class="nav-inner"><a href="index.html" class="nav-logo"><span class="nav-logo-icon">DD</span>Deep Dive Robotics</a><button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="jobs.html" class="active">Jobs</a></li><li><a href="papers.html">Papers</a></li><li><a href="careers.html">Careers</a></li><li><a href="about.html">About</a></li></ul></div></nav>
-
-  <header class="page-hero">
-    <div class="container">
-      <span class="eyebrow">Career Discovery</span>
-      <h1>ROV & Underwater Robotics Jobs</h1>
-      <p>Search demo job listings for ROV engineering, marine robotics, embedded systems, perception, and offshore technology roles.</p>
-    </div>
-  </header>
-
-  <main class="section">
-    <div class="container">
-      <div class="notice">This page uses a demo dataset for GitHub Pages compatibility. A live job API such as Adzuna, SerpAPI, or another job search API can be connected in a deployment version.</div>
-      <div class="filter-panel">
-        <input id="jobKeyword" type="search" placeholder="Search keyword: ROV, control, perception..." />
-        <select id="jobCountry"><option value="">All countries</option></select>
-        <select id="jobType"><option value="">All job types</option><option>Internship</option><option>Full-time</option><option>Part-time</option><option>Contract</option></select>
-        <select id="jobExperience"><option value="">All experience levels</option><option>Student</option><option>Junior</option><option>Mid-level</option><option>Senior</option></select>
-        <select id="jobMode"><option value="">Remote / On-site</option><option>Remote</option><option>Hybrid</option><option>On-site</option></select>
-      </div>
-      <div class="results-meta"><span id="jobCount"></span></div>
-      <div id="jobsResults" class="results-grid"></div>
-    </div>
-  </main>
-
-  <footer class="footer"><div class="container footer-bottom"><span>© 2026 DeepDive Technologies</span><span>MCH4952 Lecture Project</span></div></footer>
-  <script src="script.js"></script>
-</body>
-</html>
+<div class="page-transition"></div>
+<nav class="topbar"><a class="brand" href="index.html"><img src="assets/deepdive-logo.svg" alt="Deep Dive Robotics logo" /></a><button class="nav-toggle" aria-label="Toggle menu">☰</button><ul class="nav-menu"><li><a href="index.html">Home</a></li><li><a href="tools.html">Tools</a></li><li><a href="learning.html">Learning</a></li><li><a href="videos.html">Videos</a></li><li><a class="active" href="jobs.html">Jobs</a></li><li><a href="careers.html">Careers</a></li><li><a href="about.html">About</a></li></ul></nav>
+<header class="page-hero clean"><span class="mini-label">Career discovery</span><h1>ROV & Marine Robotics Jobs</h1><p>Filter demo listings and open real application/search pages for each job type.</p></header>
+<main class="jobs-page">
+  <div class="filter-panel">
+    <input id="jobKeyword" type="search" placeholder="Search: ROV, software, perception..." />
+    <select id="jobCountry"><option value="">All countries</option></select>
+    <select id="jobType"><option value="">All types</option><option>Internship</option><option>Full-time</option><option>Part-time</option><option>Contract</option></select>
+    <select id="jobExperience"><option value="">All levels</option><option>Student</option><option>Junior</option><option>Mid-level</option><option>Senior</option></select>
+    <select id="jobMode"><option value="">All modes</option><option>Remote</option><option>Hybrid</option><option>On-site</option></select>
+  </div>
+  <p id="jobCount" class="result-count"></p>
+  <section id="jobsResults" class="job-grid"></section>
+</main>
+<script src="script.js"></script>
+</body></html>

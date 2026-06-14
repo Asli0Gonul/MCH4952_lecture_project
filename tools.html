@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Engineering Tools — Deep Dive Robotics</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="tools">
+  <div class="page-transition"></div>
+  <nav class="topbar">
+    <a class="brand" href="index.html"><img src="assets/deepdive-logo.svg" alt="Deep Dive Robotics logo" /></a>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-menu">
+      <li><a href="index.html">Home</a></li><li><a class="active" href="tools.html">Tools</a></li><li><a href="learning.html">Learning</a></li><li><a href="videos.html">Videos</a></li><li><a href="jobs.html">Jobs</a></li><li><a href="careers.html">Careers</a></li><li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <header class="page-hero clean">
+    <span class="mini-label">Functional calculators</span>
+    <h1>Engineering Tools</h1>
+    <p>Use simple early-stage calculators for buoyancy, thruster force, battery runtime, and ROV component planning.</p>
+  </header>
+
+  <main class="tool-page">
+    <section class="calculator-card" id="buoyancy">
+      <div class="calc-info">
+        <span class="calc-icon">▧</span>
+        <h2>Buoyancy Calculator</h2>
+        <p>Estimate buoyant force using water density, displaced volume, and vehicle weight.</p>
+      </div>
+      <form class="calc-form" data-calc="buoyancy">
+        <label>Water density (kg/m³)<input type="number" name="density" value="1025" step="1" /></label>
+        <label>Displaced volume (L)<input type="number" name="volume" value="12" step="0.1" /></label>
+        <label>Vehicle mass (kg)<input type="number" name="mass" value="11.5" step="0.1" /></label>
+        <button class="btn primary" type="submit">Calculate</button>
+      </form>
+      <div class="calc-result" id="buoyancyResult">Enter values and calculate.</div>
+    </section>
+
+    <section class="calculator-card" id="thruster">
+      <div class="calc-info">
+        <span class="calc-icon">✣</span>
+        <h2>Thruster Estimator</h2>
+        <p>Estimate required thrust from drag force and desired safety factor.</p>
+      </div>
+      <form class="calc-form" data-calc="thruster">
+        <label>Drag force (N)<input type="number" name="drag" value="45" step="0.1" /></label>
+        <label>Number of thrusters<input type="number" name="count" value="4" step="1" min="1" /></label>
+        <label>Safety factor<input type="number" name="safety" value="1.5" step="0.1" /></label>
+        <button class="btn primary" type="submit">Calculate</button>
+      </form>
+      <div class="calc-result" id="thrusterResult">Enter values and calculate.</div>
+    </section>
+
+    <section class="calculator-card" id="battery">
+      <div class="calc-info">
+        <span class="calc-icon">▰</span>
+        <h2>Battery Life Estimator</h2>
+        <p>Estimate approximate operating time from battery voltage, capacity, and system power.</p>
+      </div>
+      <form class="calc-form" data-calc="battery">
+        <label>Battery voltage (V)<input type="number" name="voltage" value="14.8" step="0.1" /></label>
+        <label>Capacity (Ah)<input type="number" name="capacity" value="12" step="0.1" /></label>
+        <label>Average power draw (W)<input type="number" name="power" value="90" step="1" /></label>
+        <label>Usable capacity (%)<input type="number" name="usable" value="80" step="1" /></label>
+        <button class="btn primary" type="submit">Calculate</button>
+      </form>
+      <div class="calc-result" id="batteryResult">Enter values and calculate.</div>
+    </section>
+
+    <section class="calculator-card" id="component">
+      <div class="calc-info">
+        <span class="calc-icon">◎</span>
+        <h2>ROV Component Selection Helper</h2>
+        <p>Select a mission type and get basic component recommendations.</p>
+      </div>
+      <form class="calc-form" data-calc="component">
+        <label>Mission type
+          <select name="mission">
+            <option value="inspection">Inspection</option>
+            <option value="research">Research / Sampling</option>
+            <option value="competition">Student Competition</option>
+            <option value="mapping">Mapping / Survey</option>
+          </select>
+        </label>
+        <label>Operating depth (m)<input type="number" name="depth" value="20" step="1" /></label>
+        <button class="btn primary" type="submit">Recommend</button>
+      </form>
+      <div class="calc-result" id="componentResult">Choose mission type and calculate.</div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

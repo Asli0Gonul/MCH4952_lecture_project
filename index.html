@@ -3,139 +3,121 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Deep Dive Robotics — Integrated Underwater Robotics Platform</title>
-  <meta name="description" content="Integrated learning and engineering tools for underwater robotics. ROV design tools, learning paths, research papers, and career opportunities." />
+  <title>Deep Dive Robotics</title>
+  <meta name="description" content="Integrated learning and engineering tools for underwater robotics." />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body data-page="home">
-  <nav class="navbar">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo"><span class="nav-logo-icon">DD</span>Deep Dive Robotics</a>
-      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="jobs.html">Jobs</a></li>
-        <li><a href="papers.html">Papers</a></li>
-        <li><a href="careers.html">Careers</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
-    </div>
+  <div class="page-transition"></div>
+
+  <nav class="topbar">
+    <a class="brand" href="index.html" aria-label="Deep Dive Robotics home">
+      <img src="assets/deepdive-logo.svg" alt="Deep Dive Robotics logo" />
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-menu">
+      <li><a class="active" href="index.html">Home</a></li>
+      <li><a href="tools.html">Tools</a></li>
+      <li><a href="learning.html">Learning</a></li>
+      <li><a href="videos.html">Videos</a></li>
+      <li><a href="jobs.html">Jobs</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
   </nav>
 
-  <header class="hero hero-home">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <span class="eyebrow">DeepDive Technologies Project</span>
-      <h1>Deep Dive Robotics</h1>
-      <p class="subtitle">Integrated learning, engineering tools, research discovery, and career support for underwater robotics.</p>
-      <div class="hero-cta">
-        <a href="#tools" class="btn btn-primary">Explore Tools &rarr;</a>
-        <a href="jobs.html" class="btn btn-secondary">Find ROV Jobs</a>
-        <a href="papers.html" class="btn btn-secondary">Search Papers</a>
+  <header class="hero-ui">
+    <div class="hero-text">
+      <h1>Deep Dive<br />Robotics</h1>
+      <p>Integrated learning and engineering tools for underwater robotics</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="tools.html">Explore Platform <span>→</span></a>
+        <a class="btn ghost" href="videos.html">Watch ROV Videos</a>
       </div>
+    </div>
+    <div class="rov-visual" aria-hidden="true">
+      <div class="rov-body">
+        <span class="light one"></span>
+        <span class="light two"></span>
+        <span class="thruster t1"></span>
+        <span class="thruster t2"></span>
+        <span class="thruster t3"></span>
+        <span class="thruster t4"></span>
+      </div>
+      <div class="cable"></div>
     </div>
   </header>
 
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Everything You Need in One Platform</h2>
-        <p>Design tools, structured learning, technical resources, papers, and career opportunities for underwater robotics.</p>
+  <main>
+    <section class="quick-cards">
+      <a class="quick-card" href="tools.html">
+        <div class="quick-icon">▣</div>
+        <div><h3>Engineering Tools</h3><p>Professional calculators and estimators for ROV design and analysis.</p></div>
+        <span>→</span>
+      </a>
+      <a class="quick-card" href="learning.html">
+        <div class="quick-icon">▤</div>
+        <div><h3>Learning Paths</h3><p>Structured tutorials and guides to build your understanding step by step.</p></div>
+        <span>→</span>
+      </a>
+      <a class="quick-card" href="videos.html">
+        <div class="quick-icon">▶</div>
+        <div><h3>ROV Videos</h3><p>Curated underwater robotics videos for design, operation, and learning.</p></div>
+        <span>→</span>
+      </a>
+      <a class="quick-card" href="jobs.html">
+        <div class="quick-icon">⌁</div>
+        <div><h3>ROV Jobs</h3><p>Find marine robotics, ROV, control, and perception career opportunities.</p></div>
+        <span>→</span>
+      </a>
+    </section>
+
+    <section class="featured">
+      <div class="section-title-row">
+        <h2>Featured Tools</h2>
+        <a href="tools.html">View all tools →</a>
       </div>
-      <div class="card-grid">
-        <article class="card">
-          <div class="card-icon">⚙</div>
-          <h3>Engineering Tools</h3>
-          <p>Professional calculators and estimators for buoyancy, thruster sizing, battery life, and ROV component selection.</p>
-          <a href="#tools" class="card-link">View tools &rarr;</a>
-        </article>
-        <article class="card">
-          <div class="card-icon">📘</div>
-          <h3>Learning Paths</h3>
-          <p>Structured learning content that connects mechanical design, electronics, control, perception, and underwater communication.</p>
-          <a href="about.html" class="card-link">Start learning &rarr;</a>
-        </article>
-        <article class="card">
-          <div class="card-icon">📄</div>
-          <h3>Technical Resources</h3>
-          <p>Find research papers, reports, references, and datasets related to subsea and marine robotics.</p>
-          <a href="papers.html" class="card-link">Browse resources &rarr;</a>
-        </article>
-        <article class="card">
-          <div class="card-icon">🎓</div>
-          <h3>Career Support</h3>
-          <p>Discover ROV, AUV, offshore robotics, marine perception, and embedded systems opportunities with smart filters.</p>
-          <a href="jobs.html" class="card-link">Explore jobs &rarr;</a>
-        </article>
+      <div class="tool-preview-grid">
+        <a class="tool-preview" href="tools.html#buoyancy">
+          <div class="tool-art buoy">▧</div>
+          <div><h3>Buoyancy Calculator</h3><p>Calculate buoyancy, volume requirement, and stability for your ROV.</p></div>
+          <span>→</span>
+        </a>
+        <a class="tool-preview" href="tools.html#thruster">
+          <div class="tool-art thr">✣</div>
+          <div><h3>Thruster Estimator</h3><p>Estimate thrust, power consumption, and efficiency for your propulsion system.</p></div>
+          <span>→</span>
+        </a>
+        <a class="tool-preview" href="tools.html#battery">
+          <div class="tool-art batt">▰</div>
+          <div><h3>Battery Life Estimator</h3><p>Estimate runtime and energy usage based on your system configuration.</p></div>
+          <span>→</span>
+        </a>
       </div>
+    </section>
+
+    <section class="home-story">
+      <div>
+        <span class="mini-label">Why it exists</span>
+        <h2>Underwater robotics knowledge is scattered. Deep Dive brings it together.</h2>
+        <p>ROV design requires mechanical design, electronics, power systems, communication, sensors, and control knowledge. This platform turns fragmented resources into a clearer path for students and early-stage engineers.</p>
+      </div>
+      <div class="metric-boxes">
+        <div><strong>40×</strong><span>faster access to early design calculations</span></div>
+        <div><strong>2–3</strong><span>clicks to reach main platform functions</span></div>
+        <div><strong>One</strong><span>integrated place for tools, learning, videos, and jobs</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <img src="assets/deepdive-logo.svg" alt="Deep Dive Robotics logo" />
+      <p>Empowering engineers and students to design, learn, and innovate in underwater robotics.</p>
     </div>
-  </section>
-
-  <section class="section section-alt" id="tools">
-    <div class="container">
-      <div class="section-header-row">
-        <div>
-          <h2>Featured Tools</h2>
-          <p>Demo tools designed for early-stage underwater vehicle design decisions.</p>
-        </div>
-        <a href="about.html" class="card-link">View all tools &rarr;</a>
-      </div>
-      <div class="featured-grid">
-        <article class="featured-card"><div class="card-icon">⚖</div><div><h3>Buoyancy Calculator</h3><p>Estimate buoyant force, displacement volume, and ballast requirement.</p></div><span class="arrow">→</span></article>
-        <article class="featured-card"><div class="card-icon">⚡</div><div><h3>Thruster Estimator</h3><p>Estimate required thrust and power for ROV propulsion systems.</p></div><span class="arrow">→</span></article>
-        <article class="featured-card"><div class="card-icon">🔋</div><div><h3>Battery Life Estimator</h3><p>Predict mission runtime based on system load and battery capacity.</p></div><span class="arrow">→</span></article>
-        <article class="featured-card"><div class="card-icon">🛠</div><div><h3>ROV Component Selection</h3><p>Compare cameras, manipulators, sensors, tethers, and control components.</p></div><span class="arrow">→</span></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="split-section">
-        <div class="info-block">
-          <h3>The Problem</h3>
-          <p>Underwater robotics requires multidisciplinary knowledge, but information is often scattered across papers, forums, courses, calculators, and vendor websites.</p>
-          <ul>
-            <li>Mechanical, electronics, control, and communication knowledge are fragmented.</li>
-            <li>Students spend time switching between unrelated platforms.</li>
-            <li>Engineering calculators are not always accessible for early-stage design.</li>
-            <li>ROV and marine robotics career paths are difficult to discover.</li>
-          </ul>
-        </div>
-        <div class="info-block solution">
-          <h3>Our Solution</h3>
-          <p>Deep Dive Robotics brings learning, design, research, and career discovery into one accessible platform.</p>
-          <ul>
-            <li>Engineering tools accessible in 2–3 clicks.</li>
-            <li>Research paper finder with topic-based filters.</li>
-            <li>ROV and marine robotics job board.</li>
-            <li>Clear learning paths for students and early-stage engineers.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="metrics-strip">
-        <div class="metric"><div class="value">40×</div><div class="label">Faster design access</div></div>
-        <div class="metric"><div class="value">2–3</div><div class="label">Clicks to key tools</div></div>
-        <div class="metric"><div class="value">30–40%</div><div class="label">Less platform switching</div></div>
-      </div>
-
-      <div class="image-panel">
-        <img src="assets/platform-interface.png" alt="Deep Dive Robotics platform interface" />
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="nav-logo"><span class="nav-logo-icon">DD</span>DeepDive Technologies</a>
-        <p>Empowering engineers and students to design, learn, and innovate in underwater robotics.</p>
-      </div>
-      <div><h4>Platform</h4><ul class="footer-links"><li><a href="#tools">Tools</a></li><li><a href="papers.html">Papers</a></li><li><a href="jobs.html">Jobs</a></li></ul></div>
-      <div><h4>Company</h4><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="careers.html">Careers</a></li></ul></div>
-    </div>
-    <div class="footer-bottom container"><span>© 2026 DeepDive Technologies</span><span>MCH4952 Lecture Project</span></div>
+    <div><h4>Platform</h4><a href="tools.html">Tools</a><a href="learning.html">Learning</a><a href="videos.html">Videos</a><a href="jobs.html">Jobs</a></div>
+    <div><h4>Company</h4><a href="about.html">About</a><a href="careers.html">Careers</a><a href="careers.html#apply">Contact</a></div>
+    <div><h4>Stay Updated</h4><p>Subscribe for new tools, resources, and updates.</p><div class="subscribe"><input placeholder="Enter your email" /><button>➤</button></div></div>
   </footer>
 
   <script src="script.js"></script>
