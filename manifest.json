@@ -1,7 +1,7 @@
 {
-  "name": "Deep Dive Robotics",
+  "name": "Deep Dive Robotics App",
   "short_name": "DeepDive",
-  "description": "Integrated learning and engineering tools for underwater robotics.",
+  "description": "Mobile app version of Deep Dive Robotics.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
